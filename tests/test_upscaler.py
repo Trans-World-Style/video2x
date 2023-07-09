@@ -6,7 +6,7 @@ import multiprocessing
 import os
 from pathlib import Path
 
-import utils
+import tests.utils as utils
 from PIL import Image
 from video2x import Upscaler, Video2X
 
