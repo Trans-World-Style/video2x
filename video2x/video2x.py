@@ -448,3 +448,6 @@ class Video2X:
             processes,
             (threshold, algorithm),
         )
+
+
+# docker run --gpus all -itd --name video -v $PWD/video2x:/workspace -p 8000:12231 nvidia/cuda:11.2.2-devel-ubuntu20.04

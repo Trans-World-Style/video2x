@@ -8,7 +8,8 @@ from pathlib import Path
 
 import utils
 from PIL import Image
-
+import sys
+sys.path.append("/workspace")
 from video2x import Upscaler, Video2X
 
 
