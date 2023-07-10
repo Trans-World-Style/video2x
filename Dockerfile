@@ -7,9 +7,17 @@ RUN apt-key adv --keyserver keyserver.ubuntu.com --recv-keys A4B469963BF863CC &&
     apt-get update && \
     apt-get install -y python3.7 python3.7-distutils && \
     apt-get install -y python3-pip && \
-    python3.7 -m pip install pip
+    python3.7 -m pip install pip && \
+    rm -rf /var/lib/apt/lists/*
+
 RUN update-alternatives --install /usr/bin/python3 python3 /usr/bin/python3.7 1 && \
-    update-alternatives --install /usr/bin/python python /usr/bin/python3.7 1
+    update-alternatives --install /usr/bin/python python /usr/bin/python3.7 1 \
+
+COPY . /workspace
+WORKDIR /workspace
+
+RUN pip install --upgrade pip && \
+    pip install pdm
 
 
 #RUN wget https://bootstrap.pypa.io/get-pip.py
