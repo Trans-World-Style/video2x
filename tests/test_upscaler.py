@@ -16,7 +16,7 @@ def test_upscaling():
     import os
     # print(f"test: {os.listdir('/tests')}")
     # print(f"data: {os.listdir('/data')}")
-    print(f'cur: {os.chdir(".")}')
+    print(f'cur: {os.getcwd()}')
     output_path = Path("/tests/data/test_video_output.mp4")
     video2x.upscale(
         Path("/tests/data/test_video.mp4"),
