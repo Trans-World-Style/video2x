@@ -10,8 +10,9 @@ RUN apt-key adv --keyserver keyserver.ubuntu.com --recv-keys A4B469963BF863CC &&
 
 RUN update-alternatives --install /usr/bin/python python /usr/bin/python3.7 1
 
-RUN python3.7 -m ensurepip
-RUN python3.7 -m pip install --upgrade pip
+RUN wget https://bootstrap.pypa.io/get-pip.py
+RUN python3.7 get-pip.py && \
+    rm get-pip.py
 
 # docker run --gpus all -itd --name video -v $PWD:/workspace -p 8000:12231 video_image
 # docker run --gpus all -itd --name video -v $PWD/video2x:/workspace -p 8000:12231 k4yt3x/video2x:latest /bin/bash
