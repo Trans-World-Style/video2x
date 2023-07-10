@@ -18,8 +18,8 @@ RUN wget https://developer.download.nvidia.com/compute/cuda/repos/$DISTRO/$ARCH/
 RUN rm /etc/apt/sources.list.d/cuda.list && \
     apt-key del 7fa2af80 && \
     apt-get update && \
-    apt search nvidia-driver-460 && \
-    apt policy nvidia-driver-460 && \
+    apt search nvidia-driver-525 && \
+    apt policy nvidia-driver-525 && \
     apt-get install -y --no-install-recommends \
         python3.8 python3-pip python3-opencv python3-pil \
         python3.8-dev libvulkan-dev glslang-dev glslang-tools \
