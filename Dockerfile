@@ -5,7 +5,7 @@
 # Patched by plambeto: April 10, 2022
 
 # stage 1: build the python components into wheels
-FROM docker.io/nvidia/vulkan:1.3-470 AS builder
+FROM docker.io/nvidia/vulkan:1.2.133-450 AS builder
 ENV DEBIAN_FRONTEND=noninteractive
 ENV DISTRO=ubuntu1804
 ENV ARCH=x86_64
@@ -18,8 +18,8 @@ RUN wget https://developer.download.nvidia.com/compute/cuda/repos/$DISTRO/$ARCH/
 RUN rm /etc/apt/sources.list.d/cuda.list && \
     apt-key del 7fa2af80 && \
     apt-get update && \
-    apt search nvidia-driver-525 && \
-    apt policy nvidia-driver-525 && \
+    apt search nvidia-driver-460 && \
+    apt policy nvidia-driver-460 && \
     apt-get install -y --no-install-recommends \
         python3.8 python3-pip python3-opencv python3-pil \
         python3.8-dev libvulkan-dev glslang-dev glslang-tools \
@@ -27,13 +27,13 @@ RUN rm /etc/apt/sources.list.d/cuda.list && \
     && pip wheel -w /wheels wheel pdm-pep517 .
 
 # stage 2: install wheels into the final image
-FROM docker.io/nvidia/vulkan:1.3-470
+FROM docker.io/nvidia/vulkan:1.2.133-450
 ENV DEBIAN_FRONTEND=noninteractive
 ENV VK_ICD_FILENAMES=/usr/share/vulkan/icd.d/nvidia_icd.json\
 :/usr/share/vulkan/icd.d/radeon_icd.x86_64.json\
 :/usr/share/vulkan/icd.d/intel_icd.x86_64.json
-ENV NVIDIA_DRIVER_MAJOR_VERSION=525
-ENV NVIDIA_DRIVER_VERSION=525.89.02
+ENV NVIDIA_DRIVER_MAJOR_VERSION=460
+ENV NVIDIA_DRIVER_VERSION=460.91.03
 ENV DISTRO=ubuntu1804
 ENV ARCH=x86_64
 
