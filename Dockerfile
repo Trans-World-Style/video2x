@@ -2,7 +2,7 @@ FROM nvidia/vulkan:1.3-470
 ENV DEBIAN_FRONTEND=noninteractive
 ENV CMAKE_VERSION=3.27.0-rc4
 # python3 이상
-ENV PYTHON_VERSION=3.7
+ENV PYTHON_VERSION=3.8
 
 
 # install python 3.7
@@ -11,7 +11,7 @@ RUN apt-key adv --keyserver keyserver.ubuntu.com --recv-keys A4B469963BF863CC &&
     apt-get install -y software-properties-common &&\
     apt-add-repository -y ppa:deadsnakes/ppa && \
     apt-get update && \
-    apt-get install -y wget unzip libssl-dev ninja-build && \
+    apt-get install -y wget unzip curl libssl-dev ninja-build && \
     apt-get install -y python${PYTHON_VERSION} python${PYTHON_VERSION}-distutils && \
     apt-get install -y python3-pip && \
     python3.7 -m pip install pip && \
@@ -21,19 +21,30 @@ RUN update-alternatives --install /usr/bin/python3 python3 /usr/bin/python${PYTH
     update-alternatives --install /usr/bin/python python /usr/bin/python${PYTHON_VERSION} 1
 
 ## install cmake
-#RUN apt-get update && \
-#    apt-get install -y wget && \
-#    wget https://github.com/Kitware/CMake/releases/download/v${CMAKE_VERSION}/cmake-${CMAKE_VERSION}-linux-x86_64.sh && \
-#    chmod +x cmake-${CMAKE_VERSION}-linux-x86_64.sh && \
-#    ./cmake-${CMAKE_VERSION}-linux-x86_64.sh --skip-license --prefix=/usr/local && \
-#    rm cmake-${CMAKE_VERSION}-linux-x86_64.sh
+RUN apt-get update && \
+    apt-get install -y wget && \
+    wget https://github.com/Kitware/CMake/releases/download/v${CMAKE_VERSION}/cmake-${CMAKE_VERSION}-linux-x86_64.sh && \
+    chmod +x cmake-${CMAKE_VERSION}-linux-x86_64.sh && \
+    ./cmake-${CMAKE_VERSION}-linux-x86_64.sh --skip-license --prefix=/usr/local && \
+    rm cmake-${CMAKE_VERSION}-linux-x86_64.sh
 
+
+#RUN python_version=$(python3 -V | sed -rn 's/^Python ([[:digit:]]+\.[[:digit:]]+)\.[[:digit:]]+$/\1/p') \
+#    && curl -L \
+#        -O "https://github.com/media2x/waifu2x-ncnn-vulkan-python/releases/download/1.0.4/waifu2x-ncnn-vulkan-python-1.0.4-ubuntu1804_$python_version.zip" \
+#        -O "https://github.com/media2x/srmd-ncnn-vulkan-python/releases/download/1.0.2-2/srmd-ncnn-vulkan-python-1.0.2-2-ubuntu1804_$python_version.zip" \
+#        -O "https://github.com/media2x/realsr-ncnn-vulkan-python/releases/download/1.0.6/realsr-ncnn-vulkan-python-1.0.6-ubuntu1804_$python_version.zip" \
+#        -O "https://github.com/media2x/rife-ncnn-vulkan-python/releases/download/1.2.1/rife-ncnn-vulkan-python-1.2.1-ubuntu1804_$python_version.zip" \
+#        -O "https://github.com/media2x/realcugan-ncnn-vulkan-python/releases/download/1.0.2/realcugan-ncnn-vulkan-python-1.0.2-ubuntu1804_$python_version.zip"
 
 COPY [".", "/workspace"]
 WORKDIR /workspace
 
 RUN pip install --upgrade pip && \
     pip install pdm
+
+
+
 
 #RUN
 
@@ -43,4 +54,5 @@ RUN pip install --upgrade pip && \
 
 # docker run --gpus all -itd --name video -v $PWD:/workspace -p 8000:12231 video_image
 # docker run --gpus all -itd --name video -v $PWD/video2x:/workspace -p 8000:12231 k4yt3x/video2x:latest /bin/bash
+# docker run --gpus all -it --rm --name video -v $PWD:/workspace -p 8000:12231 video_image bash
 #docker pull k4yt3x/video2x:latest
