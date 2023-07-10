@@ -18,12 +18,13 @@ RUN wget https://developer.download.nvidia.com/compute/cuda/repos/$DISTRO/$ARCH/
 RUN rm /etc/apt/sources.list.d/cuda.list && \
     apt-key del 7fa2af80 && \
     apt-get update && \
+    apt search nvidia-driver-460 && \
+    apt policy nvidia-driver-460 && \
     apt-get install -y --no-install-recommends \
         python3.8 python3-pip python3-opencv python3-pil \
         python3.8-dev libvulkan-dev glslang-dev glslang-tools \
         build-essential swig \
-    && pip install pdm-backend \
-    && pip wheel -w /wheels wheel pdm-pep517 .
+    && pip wheel -w /wheels wheel pdm .
 
 # stage 2: install wheels into the final image
 FROM docker.io/nvidia/vulkan:1.2.133-450
@@ -38,7 +39,7 @@ ENV ARCH=x86_64
 
 COPY --from=builder /var/lib/apt/lists* /var/lib/apt/lists/
 COPY --from=builder /wheels /wheels
-COPY --from=builder /video2x /video2x
+COPY . /video2x
 WORKDIR /video2x
 
 RUN wget https://developer.download.nvidia.com/compute/cuda/repos/$DISTRO/$ARCH/cuda-keyring_1.0-1_all.deb && \
