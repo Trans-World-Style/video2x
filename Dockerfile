@@ -17,8 +17,7 @@ RUN pip install --upgrade pip && \
     pip install pdm
 
 COPY [".", "/workspace"]
-#COPY . /workspace
-#WORKDIR /workspace
+WORKDIR /workspace
 
 #RUN wget https://bootstrap.pypa.io/get-pip.py
 #RUN python3.7 get-pip.py && \
