@@ -1,5 +1,9 @@
 FROM nvidia/vulkan:1.3-470
 ENV DEBIAN_FRONTEND=noninteractive
+ENV CMAKE_VERSION=3.27.0-rc4
+# python3 이상
+ENV PYTHON_VERSION=3.7
+
 
 # install python 3.7
 RUN apt-key adv --keyserver keyserver.ubuntu.com --recv-keys A4B469963BF863CC && \
@@ -7,14 +11,23 @@ RUN apt-key adv --keyserver keyserver.ubuntu.com --recv-keys A4B469963BF863CC &&
     apt-get install -y software-properties-common &&\
     apt-add-repository -y ppa:deadsnakes/ppa && \
     apt-get update && \
-    apt-get install -y wget unzip libssl-dev cmake ninja-build && \
-    apt-get install -y python3.7 python3.7-distutils && \
+    apt-get install -y wget unzip libssl-dev ninja-build && \
+    apt-get install -y ${PYTHON_VERSION} ${PYTHON_VERSION}-distutils && \
     apt-get install -y python3-pip && \
     python3.7 -m pip install pip && \
     rm -rf /var/lib/apt/lists/*
 
-RUN update-alternatives --install /usr/bin/python3 python3 /usr/bin/python3.7 1 && \
-    update-alternatives --install /usr/bin/python python /usr/bin/python3.7 1
+RUN update-alternatives --install /usr/bin/python3 python3 /usr/bin/${PYTHON_VERSION} 1 && \
+    update-alternatives --install /usr/bin/python python /usr/bin/${PYTHON_VERSION} 1 \
+
+## install cmake
+#RUN apt-get update && \
+#    apt-get install -y wget && \
+#    wget https://github.com/Kitware/CMake/releases/download/v${CMAKE_VERSION}/cmake-${CMAKE_VERSION}-linux-x86_64.sh && \
+#    chmod +x cmake-${CMAKE_VERSION}-linux-x86_64.sh && \
+#    ./cmake-${CMAKE_VERSION}-linux-x86_64.sh --skip-license --prefix=/usr/local && \
+#    rm cmake-${CMAKE_VERSION}-linux-x86_64.sh
+
 
 COPY [".", "/workspace"]
 WORKDIR /workspace
