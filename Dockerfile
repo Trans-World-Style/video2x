@@ -8,8 +8,8 @@ RUN apt-key adv --keyserver keyserver.ubuntu.com --recv-keys A4B469963BF863CC &&
     apt-get install -y python3.7 python3.7-distutils
 #    apt-get install -y python3-pip && \
 #    python3.7 -m pip install pip
-RUN update-alternatives --install /usr/bin/python3 python3 /usr/bin/python3.7 1 && \
-    update-alternatives --install /usr/bin/python python /usr/bin/python3.7 1
+#RUN update-alternatives --install /usr/bin/python3 python3 /usr/bin/python3.7 1 && \
+#    update-alternatives --install /usr/bin/python python /usr/bin/python3.7 1
 
 
 #RUN wget https://bootstrap.pypa.io/get-pip.py
