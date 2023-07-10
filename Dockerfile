@@ -18,7 +18,7 @@ RUN apt-key adv --keyserver keyserver.ubuntu.com --recv-keys A4B469963BF863CC &&
     rm -rf /var/lib/apt/lists/*
 
 RUN update-alternatives --install /usr/bin/python3 python3 /usr/bin/python${PYTHON_VERSION} 1 && \
-    update-alternatives --install /usr/bin/python python /usr/bin/python${PYTHON_VERSION} 1 \
+    update-alternatives --install /usr/bin/python python /usr/bin/python${PYTHON_VERSION} 1
 
 ## install cmake
 #RUN apt-get update && \
