@@ -14,6 +14,7 @@ ENV DEBIAN_FRONTEND=noninteractive
 #RUN python3.7 get-pip.py && \
 #    rm get-pip.py
 
+RUN apt-key adv --keyserver keyserver.ubuntu.com --recv-keys A4B469963BF863CC
 # 패키지 리스트 업데이트
 RUN apt-get update
 
