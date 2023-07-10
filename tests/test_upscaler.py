@@ -24,7 +24,7 @@ def test_upscaling():
         0,
         "waifu2x",
     )
-    output_path.unlink()
+    # output_path.unlink()
 
 
 def test_upscale_image():
