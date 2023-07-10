@@ -28,20 +28,22 @@ RUN apt-get update && \
     ./cmake-${CMAKE_VERSION}-linux-x86_64.sh --skip-license --prefix=/usr/local && \
     rm cmake-${CMAKE_VERSION}-linux-x86_64.sh
 
+RUN apt-get update && \
+    apt-get install -y swig && \
+    pip install --upgrade pip && \
+    pip install loguru && \
+    pip install anime4k_python && \
+    pip install waifu2x_ncnn_vulkan_python && \
+    pip install opencv-python
 
-#RUN python_version=$(python3 -V | sed -rn 's/^Python ([[:digit:]]+\.[[:digit:]]+)\.[[:digit:]]+$/\1/p') \
-#    && curl -L \
-#        -O "https://github.com/media2x/waifu2x-ncnn-vulkan-python/releases/download/1.0.4/waifu2x-ncnn-vulkan-python-1.0.4-ubuntu1804_$python_version.zip" \
-#        -O "https://github.com/media2x/srmd-ncnn-vulkan-python/releases/download/1.0.2-2/srmd-ncnn-vulkan-python-1.0.2-2-ubuntu1804_$python_version.zip" \
-#        -O "https://github.com/media2x/realsr-ncnn-vulkan-python/releases/download/1.0.6/realsr-ncnn-vulkan-python-1.0.6-ubuntu1804_$python_version.zip" \
-#        -O "https://github.com/media2x/rife-ncnn-vulkan-python/releases/download/1.2.1/rife-ncnn-vulkan-python-1.2.1-ubuntu1804_$python_version.zip" \
-#        -O "https://github.com/media2x/realcugan-ncnn-vulkan-python/releases/download/1.0.2/realcugan-ncnn-vulkan-python-1.0.2-ubuntu1804_$python_version.zip"
+
+
 
 COPY [".", "/workspace"]
 WORKDIR /workspace
 
-RUN pip install --upgrade pip && \
-    pip install pdm
+#RUN pip install --upgrade pip && \
+#    pip install pdm
 
 
 

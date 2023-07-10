@@ -42,7 +42,8 @@ from pathlib import Path
 from typing import Any
 
 import ffmpeg
-from cv2 import cv2
+# from cv2 import cv2
+import cv2
 from loguru import logger
 from rich.console import Console
 from rich.file_proxy import FileProxy
