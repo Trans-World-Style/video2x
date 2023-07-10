@@ -10,7 +10,7 @@ ENV DEBIAN_FRONTEND=noninteractive
 ENV DISTRO=ubuntu1804
 ENV ARCH=x86_64
 
-#COPY . /video2x
+COPY . /video2x
 WORKDIR /video2x
 
 RUN wget https://developer.download.nvidia.com/compute/cuda/repos/$DISTRO/$ARCH/cuda-keyring_1.0-1_all.deb && \
@@ -39,7 +39,7 @@ ENV ARCH=x86_64
 
 COPY --from=builder /var/lib/apt/lists* /var/lib/apt/lists/
 COPY --from=builder /wheels /wheels
-#COPY . /video2x
+COPY . /video2x
 WORKDIR /video2x
 
 RUN wget https://developer.download.nvidia.com/compute/cuda/repos/$DISTRO/$ARCH/cuda-keyring_1.0-1_all.deb && \
@@ -65,5 +65,7 @@ RUN rm /etc/apt/sources.list.d/cuda.list && \
     && apt-get clean \
     && rm -rf /wheels /video2x /var/lib/apt/lists/*
 
-#WORKDIR /host
+WORKDIR /host
 #ENTRYPOINT ["/usr/bin/python3.8", "-m", "video2x"]
+
+# docker run --gpus all -itd --name video -v $PWD/video2x:/workspace -p 8000:12231 nvidia/cuda:11.2.2-devel-ubuntu20.04
