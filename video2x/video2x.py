@@ -451,3 +451,5 @@ class Video2X:
 
 
 # docker run --gpus all -itd --name video -v $PWD/video2x:/workspace -p 8000:12231 nvidia/cuda:11.2.2-devel-ubuntu20.04
+# docker run --gpus all -itd --name video -v $PWD/video2x:/workspace -p 8000:12231 glodonusa/vulkan_conan_cmake-ubuntu20.04-intelx64-nvidia:v1.1.2
+# docker pull glodonusa/vulkan_conan_cmake-ubuntu20.04-intelx64-nvidia:v1.1.2
