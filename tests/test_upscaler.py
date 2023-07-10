@@ -17,7 +17,7 @@ def test_upscaling():
     import os
     print(os.listdir('./tests/data'))
     video2x.upscale(
-        Path("./tests/data/test_video.mp4"),
+        Path("./tests/data/jerry.mp4"),
         output_path,
         None,
         720,
