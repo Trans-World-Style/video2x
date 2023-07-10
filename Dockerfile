@@ -30,11 +30,13 @@ RUN apt-get update && \
 
 RUN apt-get update && \
     apt-get install -y swig && \
+    apt-get install -y ffmpeg && \
     pip install --upgrade pip && \
     pip install loguru && \
     pip install anime4k_python && \
     pip install waifu2x_ncnn_vulkan_python && \
-    pip install opencv-python
+    pip install opencv-python && \
+#    pip install ffmpeg-python
 
 
 

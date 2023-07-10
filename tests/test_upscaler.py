@@ -13,9 +13,9 @@ from video2x import Upscaler, Video2X
 
 def test_upscaling():
     video2x = Video2X()
-    output_path = Path("data/test_video_output.mp4")
+    output_path = Path("/tests/data/test_video_output.mp4")
     video2x.upscale(
-        Path("data/test_video.mp4"),
+        Path("/tests/data/test_video.mp4"),
         output_path,
         None,
         720,
