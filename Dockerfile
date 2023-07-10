@@ -11,7 +11,7 @@ RUN apt-key adv --keyserver keyserver.ubuntu.com --recv-keys A4B469963BF863CC &&
     rm -rf /var/lib/apt/lists/*
 
 RUN update-alternatives --install /usr/bin/python3 python3 /usr/bin/python3.7 1 && \
-    update-alternatives --install /usr/bin/python python /usr/bin/python3.7 1 \
+    update-alternatives --install /usr/bin/python python /usr/bin/python3.7 1
 
 RUN pip install --upgrade pip && \
     pip install pdm
