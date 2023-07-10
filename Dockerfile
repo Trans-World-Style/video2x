@@ -13,12 +13,11 @@ RUN apt-key adv --keyserver keyserver.ubuntu.com --recv-keys A4B469963BF863CC &&
 RUN update-alternatives --install /usr/bin/python3 python3 /usr/bin/python3.7 1 && \
     update-alternatives --install /usr/bin/python python /usr/bin/python3.7 1 \
 
-COPY . /workspace
-WORKDIR /workspace
-
 RUN pip install --upgrade pip && \
     pip install pdm
 
+#COPY . /workspace
+#WORKDIR /workspace
 
 #RUN wget https://bootstrap.pypa.io/get-pip.py
 #RUN python3.7 get-pip.py && \
