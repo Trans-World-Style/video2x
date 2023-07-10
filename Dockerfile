@@ -16,6 +16,7 @@ RUN update-alternatives --install /usr/bin/python3 python3 /usr/bin/python3.7 1 
 RUN pip install --upgrade pip && \
     pip install pdm
 
+COPY [".", "/workspace"]
 #COPY . /workspace
 #WORKDIR /workspace
 
