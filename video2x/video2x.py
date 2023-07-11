@@ -388,6 +388,7 @@ class Video2X:
     ) -> None:
         # get basic video information
         width, height, total_frames, frame_rate = self._get_video_info(input_path)
+        print(f'origin vidio width: {width} height: {height} total_framse: {total_frames} frame_rate: {frame_rate}')
 
         # automatically calculate output width and height if only one is given
         if output_width == 0 or output_width is None:
