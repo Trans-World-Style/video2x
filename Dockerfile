@@ -32,29 +32,21 @@ RUN apt-get update && \
     apt-get install -y swig && \
     apt-get install -y ffmpeg && \
     pip install --upgrade pip && \
+    # requirements
     pip install loguru && \
+    pip install opencv-python && \
+    pip install ffmpeg-python && \
+    pip install rich && \
+    # vulkan module
     pip install anime4k_python && \
     pip install waifu2x_ncnn_vulkan_python && \
     pip install rife_ncnn_vulkan_python && \
-    pip install opencv-python
-#    pip install ffmpeg-python
-
-RUN pip install realcugan_ncnn_vulkan_python
+    pip install realcugan_ncnn_vulkan_python && \
+    pip install realsr_ncnn_vulkan_python && \
+    pip install srmd_ncnn_vulkan_python
 
 COPY [".", "/workspace"]
 WORKDIR /workspace
-
-#RUN pip install --upgrade pip && \
-#    pip install pdm
-
-
-
-
-#RUN
-
-#RUN wget https://bootstrap.pypa.io/get-pip.py
-#RUN python3.7 get-pip.py && \
-#    rm get-pip.py
 
 # docker run --gpus all -itd --name video -v $PWD:/workspace -p 8000:12231 video_image
 # docker run --gpus all -itd --name video -v $PWD/video2x:/workspace -p 8000:12231 k4yt3x/video2x:latest /bin/bash
