@@ -32,10 +32,10 @@ RUN apt-get update && \
     apt-get install -y ffmpeg && \
     pip install --upgrade pip && \
     # requirements \
-    pip install ffmpeg-python && \
     pip install opencv-python && \
     pip install loguru && \
     pip install rich && \
+    pip install ffmpeg-python && \
     # vulkan module
     pip install anime4k_python && \
     pip install waifu2x_ncnn_vulkan_python && \
