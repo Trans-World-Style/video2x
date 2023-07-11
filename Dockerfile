@@ -35,14 +35,14 @@ RUN apt-get update && \
     pip install opencv-python && \
     pip install loguru && \
     pip install rich && \
-    pip install ffmpeg-python && \
     # vulkan module
     pip install anime4k_python && \
     pip install waifu2x_ncnn_vulkan_python && \
     pip install rife_ncnn_vulkan_python && \
     pip install realcugan_ncnn_vulkan_python && \
     pip install realsr_ncnn_vulkan_python && \
-    pip install srmd_ncnn_vulkan_python
+    pip install srmd_ncnn_vulkan_python && \
+    pip install ffmpeg-python
 
 COPY [".", "/workspace"]
 WORKDIR /workspace
