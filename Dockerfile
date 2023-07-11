@@ -28,8 +28,8 @@ RUN apt-get update && \
     rm cmake-${CMAKE_VERSION}-linux-x86_64.sh
 
 RUN apt-get update && \
-    apt-get install -y swig && \
     apt-get install -y ffmpeg && \
+    apt-get install -y swig && \
     pip install --upgrade pip && \
     # requirements \
     pip install opencv-python && \
