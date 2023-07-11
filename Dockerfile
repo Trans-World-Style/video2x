@@ -35,11 +35,8 @@ RUN apt-get update && \
     pip install loguru && \
     pip install anime4k_python && \
     pip install waifu2x_ncnn_vulkan_python && \
-    pip install opencv-python && \
+    pip install opencv-python
 #    pip install ffmpeg-python
-
-
-
 
 COPY [".", "/workspace"]
 WORKDIR /workspace
