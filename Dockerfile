@@ -39,6 +39,8 @@ RUN apt-get update && \
     pip install opencv-python
 #    pip install ffmpeg-python
 
+RUN pip install realcugan_ncnn_vulkan_python
+
 COPY [".", "/workspace"]
 WORKDIR /workspace
 
