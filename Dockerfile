@@ -31,10 +31,10 @@ RUN apt-get update && \
     apt-get install -y swig && \
 #    apt-get install -y ffmpeg && \
     pip install --upgrade pip && \
-    # requirements
+    # requirements \
+    pip install ffmpeg-python && \
     pip install loguru && \
     pip install opencv-python && \
-    pip install ffmpeg-python && \
     pip install rich && \
     # vulkan module
     pip install anime4k_python && \
