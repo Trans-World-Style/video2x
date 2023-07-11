@@ -14,6 +14,7 @@ from video2x import Upscaler, Video2X
 def test_upscaling():
     video2x = Video2X()
     output_path = Path("./tests/data/output2160srmd.mp4")
+    # realsr: gpu 안씀
     algorithm = ['realcugan', "waifu2x", "realsr", "srmd"]
     video2x.upscale(
         Path("./tests/data/winter.mp4"),
@@ -21,7 +22,7 @@ def test_upscaling():
         2160,
         None,
         3,
-        5,
+        4,
         0,
         "srmd",
     )
