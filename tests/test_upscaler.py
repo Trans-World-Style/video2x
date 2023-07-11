@@ -14,7 +14,7 @@ from video2x import Upscaler, Video2X
 def test_upscaling():
     video2x = Video2X()
     output_path = Path("./tests/data/output2160real.mp4")
-    algorithm = ['realcugan', "waifu2x"]
+    algorithm = ['realcugan', "waifu2x", "anime4k"]
     video2x.upscale(
         Path("./tests/data/winter.mp4"),
         output_path,
@@ -23,7 +23,7 @@ def test_upscaling():
         3,
         5,
         0,
-        "realcugan",
+        "anime4k",
     )
     # output_path.unlink()
 
