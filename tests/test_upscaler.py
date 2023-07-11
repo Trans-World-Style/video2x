@@ -22,7 +22,7 @@ def test_upscaling():
         2160,
         None,
         3,
-        4,
+        3,
         0,
         "srmd",
     )
