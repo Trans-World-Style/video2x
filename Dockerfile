@@ -29,7 +29,7 @@ RUN apt-get update && \
 
 RUN apt-get update && \
     apt-get install -y swig && \
-    apt-get install -y ffmpeg && \
+#    apt-get install -y ffmpeg && \
     pip install --upgrade pip && \
     # requirements
     pip install loguru && \
