@@ -5,19 +5,18 @@ ENV CMAKE_VERSION=3.27.0-rc4
 ENV PYTHON_VERSION=3.8
 
 
-# install python 3.7
+# install python
 RUN apt-key adv --keyserver keyserver.ubuntu.com --recv-keys A4B469963BF863CC && \
     apt-get update && \
     apt-get install -y software-properties-common &&\
     apt-add-repository -y ppa:deadsnakes/ppa && \
     apt-get update && \
-    apt-get install -y wget unzip curl libssl-dev ninja-build && \
+    apt-get install -y unzip curl libssl-dev ninja-build && \
     apt-get install -y python${PYTHON_VERSION} python${PYTHON_VERSION}-distutils && \
     apt-get install -y python3-pip && \
     python${PYTHON_VERSION} -m pip install pip && \
-    rm -rf /var/lib/apt/lists/*
-
-RUN update-alternatives --install /usr/bin/python3 python3 /usr/bin/python${PYTHON_VERSION} 1 && \
+    rm -rf /var/lib/apt/lists/* && \
+    update-alternatives --install /usr/bin/python3 python3 /usr/bin/python${PYTHON_VERSION} 1 && \
     update-alternatives --install /usr/bin/python python /usr/bin/python${PYTHON_VERSION} 1
 
 ## install cmake
